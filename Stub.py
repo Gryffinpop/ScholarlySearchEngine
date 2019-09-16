@@ -25,3 +25,7 @@ class ScholarlySearchEngine():
     def coauthor_network(self, author):
         coauth_graph = do_coauthor_network(self.data, author)
         return coauth_graph
+    
+    def top_10_volume(self, data):
+        list_of_tuples = do_top_10_volume(self.data, data)
+        return list_of_tuples
