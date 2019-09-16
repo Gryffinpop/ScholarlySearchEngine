@@ -27,6 +27,14 @@ def do_search(data, query, col, is_number, partial_res):
             if i not in or_list:
                 or_list.append(i)
         return or_list
+    elif " xor " in query:
+        subquery = query.split(' xor ', 1)
+        query1 = subquery[0]
+        query2 = subquery[1]
+        or_list = do_search(data, query1, col, is_number, partial_res)
+        or_list_2 = do_search(data, query2, col, is_number, partial_res)
+        xor_list = [i for i in (or_list + or_list_2) if (i in or_list and i not in or_list_2) or (i not in or_list and i in or_list_2)]
+        return xor_list
     elif query.startswith("not "):
         subquery = query.replace('not ', '', 1)
         if is_number:
@@ -228,3 +236,15 @@ def do_coauthor_network(data, author):
     for name, count in counted_coauthors:
         coauthor_network.add_edge(author, name, co_authored_papers=count)
     return coauthor_network
+
+
+def top_10_volume(data):
+    from collections import Counter
+    volume_list = []
+    for row in data:
+        journal_volume_pairs = {row['journal']: row['volume']}
+        for key, value in journal_volume_pairs.items():
+            volume_list.append((key, value))
+    journal_volume_articles = Counter(volume_list).most_common(10)
+    journal_volume_articles = [journal_volume_tuple + (article, ) for journal_volume_tuple, article in journal_volume_articles]
+    return journal_volume_articles
