@@ -238,7 +238,7 @@ def do_coauthor_network(data, author):
     return coauthor_network
 
 
-def top_10_volume(data):
+def do_top_10_volume(data):
     from collections import Counter
     volume_list = []
     for row in data:
