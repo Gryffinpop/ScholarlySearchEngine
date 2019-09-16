@@ -9,7 +9,7 @@ The name of the project for Computational Thinking and Programming exam is <stro
   <li><strong>do_publication_tree</strong>, written by Martina Dello Buono;</li>
   <li><strong>do_top_ten_authors</strong>, written by Sebastian Barzaghi;</li>
   <li><strong>do_coauthor_network</strong>, written by Sebastian Barzaghi;</li>
-  <li><strong>top_10_volume</strong>, written by Sebastian Barzaghi.</li>
+  <li><strong>do_top_10_volume</strong>, written by Sebastian Barzaghi.</li>
 </ol>
 
 The input CSV file describes some metadata of existing scholarly articles published in a few academic journals.
